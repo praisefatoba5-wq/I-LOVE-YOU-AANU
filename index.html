@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I Love You Aanu ❤️</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+        body{
+            overflow:hidden;
+            height:100vh;
+            font-family:Arial,sans-serif;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            background:#000814;
+        }
+        /* BLUE GALAXY */
+        .galaxy{
+            position:fixed;
+            width:100%;
+            height:100%;
+            background: radial-gradient(circle at center,#002d72 0%,#001845 35%,#000814 70%,#000000 100%);
+            overflow:hidden;
+        }
+        /* STARS */
+        .star{
+            position:absolute;
+            width:2px;
+            height:2px;
+            background:white;
+            border-radius:50%;
+            animation:twinkle 3s infinite;
+        }
+        @keyframes twinkle{
+            0%{opacity:.2;}
+            50%{opacity:1;}
+            100%{opacity:.2;}
+        }
+        /* SHOOTING STAR */
+        .shooting-star{
+            position:absolute;
+            width:2px;
+            height:120px;
+            background:linear-gradient(white,transparent);
+            transform:rotate(45deg);
+            animation:shoot 6s linear infinite;
+            opacity:.8;
+        }
+        @keyframes shoot{
+            0%{
+                transform:translate(-200px,-200px) rotate(45deg);
+                opacity:1;
+            }
+            100%{
+                transform:translate(1400px,900px) rotate(45deg);
+                opacity:0;
+            }
+        }
+        /* BLUE GALAXY TUNNEL */
+        .tunnel{
+            position:absolute;
+            top:50%;
+            left:50%;
+            transform:translate(-50%,-50%);
+            width:700px;
+            height:700px;
+            border-radius:50%;
+            background: repeating-radial-gradient(circle, rgba(0,180,255,.25)0px, rgba(0,50,120,.18)40px, rgba(0,150,255,.08)80px);
+            animation:spin 15s linear infinite;
+            box-shadow: 0 0 150px #00bfff inset, 0 0 80px #008cff;
+        }
+        @keyframes spin{
+            0%{transform:translate(-50%,-50%) rotate(0deg) scale(.8);}
+            50%{transform:translate(-50%,-50%) rotate(180deg) scale(1.2);}
+            100%{transform:translate(-50%,-50%) rotate(360deg) scale(.8);}
+        }
+        /* FLOATING TEXT */
+        .text{
+            position:absolute;
+            font-size:28px;
+            font-weight:bold;
+            color:white;
+            text-shadow: 0 0 15px #00bfff, 0 0 35px #00bfff;
+            animation:fly 8s linear infinite;
+            opacity:0;
+        }
+        .t1{ top:20%; left:18%; animation-delay:0s; }
+        .t2{ top:18%; right:15%; animation-delay:2s; }
+        .t3{ bottom:22%; left:18%; animation-delay:4s; }
+        .t4{ bottom:18%; right:18%; animation-delay:6s; }
+        @keyframes fly{
+            0%{
+                transform:scale(.2);
+                opacity:0;
+            }
+            20%{
+                opacity:1;
+            }
+            80%{
+                opacity:1;
+            }
+            100%{
+                transform:scale(2.5);
+                opacity:0;
+            }
+        }
+        /* LOVE CARD */
+        .card{
+            position:absolute;
+            width:380px;
+            max-width:92%;
+            padding:30px;
+            border-radius:25px;
+            text-align:center;
+            background:rgba(255,255,255,.08);
+            backdrop-filter:blur(15px);
+            border:2px solid #00bfff;
+            box-shadow:0 0 40px rgba(0,191,255,.8);
+            z-index:100;
+            animation:glow 2s infinite alternate;
+        }
+        @keyframes glow{
+            from{ box-shadow:0 0 20px #00bfff; }
+            to{ box-shadow:0 0 45px #00bfff, 0 0 90px #00bfff; }
+        }
+        .card h1{
+            color:white;
+            font-size:35px;
+            margin-bottom:15px;
+        }
+        .heart{
+            font-size:70px;
+            animation:beat 1.2s infinite;
+        }
+        @keyframes beat{
+            0%{transform:scale(1);}
+            20%{transform:scale(1.3);}
+            40%{transform:scale(1.1);}
+            60%{transform:scale(1.35);}
+            100%{transform:scale(1);}
+        }
+        /* BUTTON */
+        .btn-start{
+            margin-top:20px;
+            padding:12px 35px;
+            font-size:18px;
+            font-weight:bold;
+            border:none;
+            border-radius:30px;
+            cursor:pointer;
+            color:white;
+            background:linear-gradient(45deg,#00bfff,#008cff);
+            box-shadow:0 0 25px #00bfff;
+            transition:.3s;
+        }
+        .btn-start:hover{
+            transform:scale(1.08);
+            box-shadow:0 0 45px #00bfff;
+        }
+        /* FLOATING HEARTS */
+        .floating-heart{
+            position:absolute;
+            font-size:22px;
+            animation:floatHeart 6s linear infinite;
+            opacity:0;
+            z-index: 10;
+            pointer-events: none;
+        }
+        @keyframes floatHeart{
+            0%{
+                transform:translateY(105vh) scale(.5);
+                opacity:0;
+            }
+            15%{
+                opacity:0.8;
+            }
+            90%{
+                opacity:0.8;
+            }
+            100%{
+                transform:translateY(-15vh) scale(1.5);
+                opacity:0;
+            }
+        }
+        /* FLOATING FLOWERS */
+        .floating-flower{
+            position:absolute;
+            font-size:30px;
+            animation:floatFlower 8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+            opacity:0;
+            z-index: 10;
+            pointer-events: none;
+            filter: drop-shadow(0 0 8px rgba(255, 105, 180, 0.6));
+        }
+        @keyframes floatFlower{
+            0%{
+                transform:translateY(110vh) translateX(0) scale(0.3) rotate(0deg);
+                opacity:0;
+            }
+            10%{
+                opacity:1;
+            }
+            90%{
+                opacity:0.9;
+            }
+            100%{
+                transform:translateY(-20vh) translateX(var(--tx)) scale(1) rotate(360deg);
+                opacity:0;
+            }
+        }
+        @keyframes floatFlowerSway{
+            0%, 100%{ transform: translateX(0px); }
+            25%{ transform: translateX(30px); }
+            75%{ transform: translateX(-30px); }
+        }
+        /* FOOTER */
+        .footer{
+            position:absolute;
+            bottom:15px;
+            left:50%;
+            transform:translateX(-50%);
+            color:white;
+            font-size:16px;
+            text-shadow:0 0 10px #00bfff;
+        }
+    </style>
+</head>
+<body>
+    <div class="galaxy" id="galaxyContainer">
+        <div class="shooting-star"></div>
+        <div class="tunnel"></div>
+        <div class="text t1">I LOVE YOU AANU ❤️</div>
+        <div class="text t2">LOVE OF MY LIFE</div>
+        <div class="text t3">FOREVER ∞</div>
+        <div class="text t4">ETERNAL LOVE</div>
+    </div>
+    <div class="card" id="loveCard">
+        <h1>I Love You Aanu ❤️</h1>
+        <div class="heart">❤️</div>
+        <p style="color:white; margin-top:15px;">
+            You are my happiness, my peace,<br> and my forever.
+        </p>
+        <button class="btn-start" onclick="startSurprise()">START</button>
+    </div>
+    <div class="footer">
+        Made with ❤️ for Aanu
+    </div>
+    <script>
+        const galaxy = document.getElementById("galaxyContainer");
+
+        // Create Background Stars 
+        for(let i = 0; i < 250; i++){
+            let star = document.createElement("div");
+            star.className = "star";
+            star.style.left = Math.random() * 100 + "vw";
+            star.style.top = Math.random() * 100 + "vh";
+            star.style.animationDelay = Math.random() * 3 + "s";
+            galaxy.appendChild(star);
+        }
+
+        // Generate Floating Hearts
+        function createHeart() {
+            let heart = document.createElement("div");
+            heart.className = "floating-heart";
+            heart.innerHTML = "❤️";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDelay = Math.random() * 2 + "s";
+            // Randomize sizes slightly for a realistic depth effect
+            let size = Math.random() * 15 + 15;
+            heart.style.fontSize = size + "px";
+            
+            galaxy.appendChild(heart);
+
+            // Remove elements after completion to avoid memory leaks
+            setTimeout(() => {
+                heart.remove();
+            }, 8000);
+        }
+
+        // Generate hearts continuously
+        setInterval(createHeart, 300);
+
+        // Generate Floating Flowers
+        function createFlower() {
+            let flowers = ["🌹", "🌺", "🌸", "🌼", "🌷", "🌻"];
+            let flower = document.createElement("div");
+            flower.className = "floating-flower";
+            flower.innerHTML = flowers[Math.floor(Math.random() * flowers.length)];
+            flower.style.left = Math.random() * 100 + "vw";
+            flower.style.animationDelay = Math.random() * 1.5 + "s";
+            
+            // Random horizontal translation
+            let tx = (Math.random() - 0.5) * 300;
+            flower.style.setProperty('--tx', tx + 'px');
+            
+            // Randomize flower sizes
+            let size = Math.random() * 15 + 25;
+            flower.style.fontSize = size + "px";
+            
+            galaxy.appendChild(flower);
+
+            // Remove elements after completion
+            setTimeout(() => {
+                flower.remove();
+            }, 9000);
+        }
+
+        // Click interaction logic
+        function startSurprise() {
+            // Smoothly hide the central box
+            const card = document.getElementById("loveCard");
+            card.style.transition = "all 1s ease";
+            card.style.opacity = "0";
+            card.style.transform = "scale(0.5)";
+            
+            setTimeout(() => {
+                card.style.display = "none";
+            }, 1000);
+
+            // Burst an extra flurry of hearts instantly
+            for(let i=0; i<30; i++) {
+                setTimeout(createHeart, Math.random() * 1500);
+            }
+
+            // Burst flowers with staggered timing
+            for(let i=0; i<40; i++) {
+                setTimeout(createFlower, Math.random() * 2000);
+            }
+        }
+    </script>
+</body>
+</html>
